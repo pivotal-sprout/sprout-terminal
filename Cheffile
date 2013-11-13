@@ -1,0 +1,8 @@
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'sprout-terminal',
+  :path => '.'
+
+cookbook 'osx',
+  :git => 'git://github.com/pivotal-sprout/sprout.git',
+  :path => 'osx'
