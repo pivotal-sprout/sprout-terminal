@@ -1,1 +1,2 @@
-#Shim for testing
+recipes:
+  - sprout-terminal
