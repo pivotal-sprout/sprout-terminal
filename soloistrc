@@ -2,6 +2,7 @@ recipes:
   - sprout-terminal
 
 node_attributes:
-  terminal:
-    default_profile: 'Pro'
-    update_font: true
+  sprout:
+    terminal:
+      default_profile: 'Pro'
+      update_font: true
