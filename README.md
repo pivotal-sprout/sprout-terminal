@@ -1,4 +1,7 @@
 # sprout-terminal cookbook
+
+[![Build Status](https://travis-ci.org/pivotal-sprout/sprout-terminal.svg?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-terminal)
+
 A Chef Cookbook of Recipes to Configure the Terminal Application
 
 # Requirements
