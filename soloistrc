@@ -1,8 +1,8 @@
 recipes:
   - sprout-terminal
+  - sprout-terminal::update_font
 
 node_attributes:
   sprout:
     terminal:
       default_profile: 'Pro'
-      update_font: true

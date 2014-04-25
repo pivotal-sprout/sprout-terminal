@@ -2,51 +2,82 @@
 
 [![Build Status](https://travis-ci.org/pivotal-sprout/sprout-terminal.svg?branch=master)](https://travis-ci.org/pivotal-sprout/sprout-terminal)
 
-A Chef Cookbook of Recipes to Configure the Terminal Application
+Configures OSX Terminal
 
-# Requirements
-* ruby
-* bundler
+## Usage
 
-# Usage
+### Prerequisites
+
+- [system ruby](.ruby-version)
+- [bundler](http://bundler.io/)
+
+### Quickstart
 
 ```
-bundle install
-soloist run_recipe sprout-terminal
+bundle
+bundle exec soloist
 ```
 
-To run *only* the close\_window\_on\_exit recipe:
-```
-soloist run_recipe sprout-terminal::close_window_on_exit
-```
+## Cookbook Usage
 
+### Attributes
 
-# Attributes
 *NOTE:* All preferences are namespaced under `sprout => terminal` they include:
-* close_on_exit &mdash; Closes the terminal window/tab on clean exit; the default is `true`;
-* default_profile &mdash; Sets the default terminal profile (accessed via **Preferences &rarr; Settings**); default is `'Basic'`; 
-* update_font &mdash; Updates the font to whatever binary is defined in `font_src`; default is `false`
-* font_src &mdash; Location of the font binary property list file to download. create a file of this nature is beyond the scope of this document; default points to a Menlo-Regular 18pt font.
 
-To modify attributes (i.e. to configure your terminal settings), add an entry into your `soloistrc` file and run the recipe via soloist:
-```ruby
-node_attributes:
-  sprout:
-    terminal:
-      default_profile: 'Pro'
-      update_font: true
+* `default_profile` &mdash; Sets the default terminal profile (accessed via **Preferences &rarr; Settings**); default is `'Basic'`;
+* `font_src` &mdash; Location of the font binary property list file to download. create a file of this nature is beyond the scope of this document; default points to a Menlo-Regular 18pt font.
+
+
+### Recipes
+
+1. `sprout-terminal` &mdash; The default recipe includes all of the following unless otherwise specified
+1. `sprout-terminal::set_profile` &mdash; sets the default and startup profiles to the value of the `default_profile` attribute
+1. `sprout-terminal::update_font` &mdash; a feature flag as to whether to update the font of the `default_profile` _note: this recipe is **not** part of the default recipe._
+1. `sprout-terminal::close_window_on_exit` &mdash; sets the window to close of the shell exists cleanly
+1. `sprout-terminal::reload` &mdash; since the terminal app is probably running during this script this forces it to reload it settings.
+
+## Contributing
+
+### Before committing
+
 ```
-# Recipes
-`sprout-terminal::default` &mdash; runs all of the following recipes
+bundle
+bundle exec rake
+```
 
-1. `sprout-terminal::set_profile`
-1. `sprout-terminal::update_font`
-1. `sprout-terminal::close_window_on_exit`
-1. `sprout-terminal::reload`
+The default rake task includes rubocop, foodcritic, unit specs
 
-if you want your script to notify you if you are using Terminal to change Terminal then you can also run this recipe
-`sprout-terminal::check_for_active`
+### [Rubocop](https://github.com/bbatsov/rubocop)
 
-# Author
-* [Jonathan Barnes](http://github.com/codeword)
-* [Brian Cunnie](http://github.com/cunnie)
+```
+bundle
+bundle exec rake rubocop
+```
+
+### [FoodCritic](http://acrmp.github.io/foodcritic/)
+
+```
+bundle
+bundle exec rake foodcritic
+```
+
+### Unit specs
+
+Unit specs use [ServerSpec](http://serverspec.org/)
+
+```
+bundle
+bundle exec rake spec:unit
+```
+
+### Integration specs
+
+Integrations specs will run the default recipe on the host system (destructive) and make assertions on the system after
+install.
+
+*Note:* It has a precondition that keycastr is _not_ already installed on the system.
+
+```
+bundle
+bundle exec rake spec:integration
+```
