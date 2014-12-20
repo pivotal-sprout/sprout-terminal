@@ -11,13 +11,13 @@ font_path = %Q(#{Chef::Config[:file_cache_path]}/customFont.bin)
 
 remote_file font_path do
   source term_opts['font_src']
-  owner node['current_user']
+  owner node['sprout']['user']
 end
 
 execute %Q(#{plist_cmd} 'import #{font_key} #{font_path}' #{file}) do
-  user node['current_user']
+  user node['sprout']['user']
 end
 
 execute %Q(#{plist_cmd} 'set #{antialias_key} true' #{file}) do
-  user node['current_user']
+  user node['sprout']['user']
 end

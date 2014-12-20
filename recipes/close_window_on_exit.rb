@@ -7,10 +7,10 @@ plist_cmd = '/usr/libexec/PlistBuddy -c'
 
 execute %Q(#{plist_cmd} 'add #{key} integer 1' #{file}) do
   ignore_failure true
-  user node['current_user']
+  user node['sprout']['user']
 end
 
 execute %Q(#{plist_cmd} 'set #{key} 1' #{file}) do
   ignore_failure true
-  user node['current_user']
+  user node['sprout']['user']
 end
