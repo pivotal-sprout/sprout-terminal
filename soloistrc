@@ -1,6 +1,5 @@
 recipes:
   - sprout-terminal
-  - sprout-terminal::update_font
 
 node_attributes:
   sprout:

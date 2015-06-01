@@ -25,14 +25,11 @@ bundle exec soloist
 *NOTE:* All preferences are namespaced under `sprout => terminal` they include:
 
 * `default_profile` &mdash; Sets the default terminal profile (accessed via **Preferences &rarr; Settings**); default is `'Basic'`;
-* `font_src` &mdash; Location of the font binary property list file to download. create a file of this nature is beyond the scope of this document; default points to a Menlo-Regular 18pt font.
-
 
 ### Recipes
 
 1. `sprout-terminal` &mdash; The default recipe includes all of the following unless otherwise specified
 1. `sprout-terminal::set_profile` &mdash; sets the default and startup profiles to the value of the `default_profile` attribute
-1. `sprout-terminal::update_font` &mdash; a feature flag as to whether to update the font of the `default_profile` _note: this recipe is **not** part of the default recipe._
 1. `sprout-terminal::close_window_on_exit` &mdash; sets the window to close of the shell exists cleanly
 1. `sprout-terminal::reload` &mdash; since the terminal app is probably running during this script this forces it to reload it settings.
 
