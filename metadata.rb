@@ -1,6 +1,6 @@
 name             'sprout-terminal'
 maintainer       'Pivotal'
-maintainer_email 'sprout-maintainers@pivotallabs.com'
+maintainer_email 'sprout-maintainers@googlegroups.com'
 license          'MIT'
 description      'Configures OSX Terminal'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
