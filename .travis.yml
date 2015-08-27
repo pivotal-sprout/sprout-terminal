@@ -3,5 +3,6 @@ rvm: system
 install:
   - sudo gem install bundler --no-ri --no-rdoc
   - sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future bundle install
+  - defaults write com.apple.Terminal 'Default Window Settings' Basic
 script:
   - bundle exec rake ci
